@@ -7,7 +7,7 @@
 - Elasticsearch:
 
     - Você pode acessar o Elasticsearch em http://localhost:9200 ou http://<seu-ip>:9200 se estiver em um ambiente diferente.
-    - Por exemplo, para verificar se o Elasticsearch está funcionando corretamente, você pode acessar http://localhost:9200/_cat/health?v.
+    - Por exemplo, para verificar se o Elasticsearch está funcionando corretamente, você pode acessar http://localhost:9200/_cat/health?
 
 - Kibana:
 
