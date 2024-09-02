@@ -10,8 +10,9 @@
   - Por exemplo, para verificar se o Elasticsearch está funcionando corretamente, você pode acessar http://localhost:9200/_cat/health?v.
 
 - Kibana:
-  
-  - A interface do Kibana estará disponível em http://localhost:5601.
+
+    - A interface do Kibana estará disponível em http://localhost:5601.
+    - Após iniciar o Kibana, você pode configurá-lo para se conectar ao Elasticsearch e começar a explorar e visualizar seus dados.
 
 - Create Index On Elasticsearch:
   
