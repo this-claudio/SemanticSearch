@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer
 from elasticsearch import Elasticsearch
 
-# Inicializar o Flask
+# Inicializar o Flask 
 app = Flask(__name__)
 # Inicializar o SpellChecker
 # spell = SpellChecker(language="pt")
@@ -102,13 +102,14 @@ def RemoveManyFromElastic():
             errors.append({"movie": movie, "error": "No show_id provided"})
             continue
         
-        movie["descriptionVector"] = embed_text(movie["description"])
+    movie["descriptionVector"] = embed_text(
+        f"description:{movie['description']}, type:{movie['type']}, title:{movie['title']}, country:{movie['country']}, duration:{movie['duration']}, listed_in:{movie['listed_in']}, release_year:{movie['release_year']}, cast:{movie['cast']}")
 
-        try:
-            load_es()  # Supondo que load_es() faz alguma inicialização necessária
-            es.delete(index='all_movies', id=movie["show_id"])
-            success_count += 1
-        except Exception as e:
+    try:
+        load_es()  # Supondo que load_es() faz alguma inicialização necessária
+        es.delete(index='all_movies', id=movie["show_id"])
+        success_count += 1
+    except Exception as e:
             errors.append({"movie": movie, "error": str(e)})
 
     if success_count == len(movies):
@@ -197,4 +198,4 @@ def getMovies():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
